@@ -1,0 +1,19 @@
+spring:
+
+zuul:
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+  routes:
+    fullhd:
+      path: /fullhd/**
+      sensitiveHeaders:
+      url: http://localhost:8081
+    hd:
+      path: /hd/**
+      sensitiveHeaders:
+      url: http://localhost:8082
+    poket:
+      path: /pocket/**
+      sensitiveHeaders:
+      url: http://localhost:8083

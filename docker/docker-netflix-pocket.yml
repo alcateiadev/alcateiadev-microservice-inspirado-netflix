@@ -1,0 +1,14 @@
+version: "3.3"
+
+services:
+  netflix-pocket:
+    image: com.br.alcateiadev.netflix/netflix:laster
+    ports:
+      - 8083:8081
+    environment:
+      - video.path=video-pocket.mp4
+      - video.size=1535468
+      - video.ext=video-pocket.mp4
+      - s3.host=http://172.18.0.1:9444/s3
+    
+

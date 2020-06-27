@@ -1,0 +1,13 @@
+version: "3.3"
+
+services:
+  netflix-hd:
+    image: com.br.alcateiadev.netflix/netflix:laster
+    ports:
+      - 8082:8081
+    environment:
+      - video.path=video-hd.mp4
+      - video.size=5083276
+      - video.ext=video-hd.mp4
+      - s3.host=http://172.18.0.1:9444/s3    
+
