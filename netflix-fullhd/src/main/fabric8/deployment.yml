@@ -5,7 +5,6 @@ metadata:
     app: ${spring.application.name}
   name: ${spring.application.name}
 spec:
-  replicas: ${deployment.replicas}
   selector:
     matchLabels:
       app: ${spring.application.name}
@@ -20,7 +19,7 @@ spec:
       serviceAccountName: default
       containers:
         - name: ${spring.application.name}
-          image: "localhost/${project.id}/${project.artifactId}:${git.commit.id.describe}"
+          image: "localhost:5000/${project.artifactId}:${git.commit.id.describe}"
           livenessProbe:
             httpGet:
               path: ${spring.servlet.context-path}/actuator/liveness

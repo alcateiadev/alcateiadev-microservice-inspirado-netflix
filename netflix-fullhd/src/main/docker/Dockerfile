@@ -1,5 +1,6 @@
 FROM openjdk:8-jre-alpine
-VOLUME /tmp
-ADD /target/netflix-fullhd.jar app.jar
+COPY maven /opt/app/
+WORKDIR /opt/app
+ARG JAR_PATH
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
