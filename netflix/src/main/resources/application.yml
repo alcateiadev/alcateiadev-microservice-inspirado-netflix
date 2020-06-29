@@ -8,12 +8,12 @@ zuul:
     fullhd:
       path: /fullhd/**
       sensitiveHeaders:
-      url: http://localhost:8081
+      url: http://192.168.0.104:8081
     hd:
       path: /hd/**
       sensitiveHeaders:
-      url: http://localhost:8082
+      url: http://192.168.0.104:8082
     poket:
       path: /pocket/**
       sensitiveHeaders:
-      url: http://localhost:8083
+      url: http://192.168.0.104:8083

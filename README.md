@@ -21,7 +21,14 @@ sudo install minikube /usr/local/bin/
 
 ## Subir minikube
 ```
+
+// iniciar padrão
 minikube start
+
+// iniciar alocando memoria e processador
+minikube start --cpus 4 --memory 8192
+
+
 ```
 
 ## Instalar o kubectl
@@ -52,8 +59,10 @@ mvn -Ddeployment.replicas=3 validate fabric8:resource fabric8:helm
 
 kubectl create namespace netflix
 
+// instalando
+
 // run netflix-gateway
-helm install  netflix target/fabric8/helm/kubernetes/netflix  --namespace=netflix
+helm install  netflix target/fabric8/helm/kubernetes/netflix-app  --namespace=netflix
 
 // run netflix-fullhd
 helm install  netflixfullhd target/fabric8/helm/kubernetes/netflix-fullhd  --namespace=netflix
@@ -64,6 +73,19 @@ helm install netflixhd target/fabric8/helm/kubernetes/netflix-hd  --namespace=ne
 // run netflix-pocket
 helm install  netflixpocket target/fabric8/helm/kubernetes/netflix-pocket  --namespace=netflix
 
+// Removendo
+
+// run netflix-gateway
+helm uninstall  netflix target/fabric8/helm/kubernetes/netflix-app  --namespace=netflix
+
+// run netflix-fullhd
+helm uninstall  netflixfullhd target/fabric8/helm/kubernetes/netflix-fullhd  --namespace=netflix
+
+// run netflix-fullhd
+helm uninstall netflixhd target/fabric8/helm/kubernetes/netflix-hd  --namespace=netflix
+
+// run netflix-pocket
+helm uninstall  netflixpocket target/fabric8/helm/kubernetes/netflix-pocket  --namespace=netflix
 
 
 ```

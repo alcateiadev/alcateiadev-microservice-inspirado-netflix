@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.br.alcateiadev.netflix</groupId>
-	<artifactId>netflix</artifactId>
+	<artifactId>netflix-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>netflix</name>
 	<description>Demo project for Spring Boot</description>
@@ -26,10 +26,12 @@
 	</properties>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
@@ -46,6 +48,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>
