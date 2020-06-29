@@ -15,6 +15,12 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
+		<!-- essas configurações são necessárias para poder serrem configrados os arquivos do kubernetes-->
+		<spring.application.name>${artifactId}</spring.application.name>
+		<spring.application.port>8084</spring.application.port>
+		<fabric8.maven.plugin.version>3.5.38</fabric8.maven.plugin.version>
+		<fabric8.helm.chart>${artifactId}</fabric8.helm.chart>
+
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Hoxton.SR5</spring-cloud.version>
 	</properties>
@@ -59,6 +65,44 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>fabric8-maven-plugin</artifactId>
+				<version>${fabric8.maven.plugin.version}</version>
+				<configuration>
+					<verbose>true</verbose>
+					<images>
+						<image>
+							<name>localhost:5000/${project.artifactId}:${git.commit.id.describe}</name>
+							<build>
+								<tags>
+									<tag>latest</tag>
+									<tag>${git.commit.id.describe}</tag>
+								</tags>
+								<dockerFile>Dockerfile</dockerFile>
+								<assembly>
+									<targetDir>/opt/app</targetDir>
+									<descriptor>assembly.xml</descriptor>
+								</assembly>
+							</build>
+						</image>
+					</images>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>pl.project13.maven</groupId>
+				<artifactId>git-commit-id-plugin</artifactId>
+				<version>2.2.4</version>
+				<executions>
+					<execution>
+						<id>get-the-git-infos</id>
+						<goals>
+							<goal>revision</goal>
+						</goals>
+						<phase>validate</phase>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ${spring.application.name}
+  name: ${spring.application.name}
+spec:
+  serviceAccountName: default
+  selector:
+    app: ${spring.application.name}
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: ${spring.application.port}

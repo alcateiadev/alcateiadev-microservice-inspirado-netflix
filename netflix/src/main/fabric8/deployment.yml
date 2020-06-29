@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ${spring.application.name}
+    commit: ${git.commit.id.describe}
+  name: ${spring.application.name}
+spec:
+  selector:
+    matchLabels:
+      app: ${spring.application.name}
+  template:
+    metadata:
+      labels:
+        app: ${spring.application.name}
+      annotations:
+        timestamp: ${timestamp}
+    spec:
+      serviceAccountName: default
+      containers:
+        - name: ${spring.application.name}
+          image: "localhost:5000/${project.artifactId}:${git.commit.id.describe}"
+          env:
+            - name: KUBERNETES_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.namespace
+            - name: JAVA_OPTIONS
+              value: "-Djava.security.egd=file:/dev/./urandom "
+            - name: SPRING_APPLICATION_NAME
+              value: ${spring.application.name}
