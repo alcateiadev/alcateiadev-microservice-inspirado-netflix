@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: ${spring.application.name}
+    commit: ${git.commit.id.describe}
   name: ${spring.application.name}
 spec:
   selector:
@@ -12,7 +13,6 @@ spec:
     metadata:
       labels:
         app: ${spring.application.name}
-        api-key-secured: ${api.key.secured}
       annotations:
         timestamp: ${timestamp}
     spec:
@@ -20,18 +20,6 @@ spec:
       containers:
         - name: ${spring.application.name}
           image: "localhost:5000/${project.artifactId}:${git.commit.id.describe}"
-          livenessProbe:
-            httpGet:
-              path: ${spring.servlet.context-path}/actuator/liveness
-              port: ${spring.application.port}
-            initialDelaySeconds: 80
-            timeoutSeconds: 2
-          readinessProbe:
-            httpGet:
-              path: ${spring.servlet.context-path}/actuator/health
-              port: ${spring.application.port}
-            initialDelaySeconds: 40
-            timeoutSeconds: 5
           env:
             - name: KUBERNETES_NAMESPACE
               valueFrom:
