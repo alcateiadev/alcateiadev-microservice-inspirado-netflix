@@ -8,12 +8,30 @@ zuul:
     fullhd:
       path: /fullhd/**
       sensitiveHeaders:
-      url: http://192.168.0.104:8081
+      url: http://netflix-fullhd.local
     hd:
       path: /hd/**
       sensitiveHeaders:
-      url: http://192.168.0.104:8082
+      url: http://netflix-hd.local
     poket:
       path: /pocket/**
       sensitiveHeaders:
-      url: http://192.168.0.104:8083
+      url: http://netflix-pocket.local
+
+#zuul:
+#  host:
+#    connect-timeout-millis: 10000
+#    socket-timeout-millis: 60000
+#  routes:
+#    fullhd:
+#      path: /fullhd/**
+#      sensitiveHeaders:
+#      url: http://192.168.0.104:8081
+#    hd:
+#      path: /hd/**
+#      sensitiveHeaders:
+#      url: http://192.168.0.104:8082
+#    poket:
+#      path: /pocket/**
+#      sensitiveHeaders:
+#      url: http://192.168.0.104:8083

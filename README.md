@@ -46,7 +46,7 @@ kubectl get pods --all-namespaces
 ```
 minikube addons enable registry  
 kubectl get pods -n kube-system
-kubectl port-forward --namespace kube-system registry-5l9rw 5000:5000
+kubectl port-forward --namespace kube-system registry-wndk5 5000:5000
 ```  
 
 Comandos para compilar a aplicação, gerar a imagem e dar o push do registry
@@ -88,6 +88,48 @@ helm uninstall netflixhd target/fabric8/helm/kubernetes/netflix-hd  --namespace=
 helm uninstall  netflixpocket target/fabric8/helm/kubernetes/netflix-pocket  --namespace=netflix
 
 ```
+
+## Configurando o Ingress
+Na pasta Docker, rodar o comando
+```
+kubectl apply -f ingress-netflix.yaml
+```
+
+Identificar qual é o IP do minikube
+```
+minikube ip
+```
+
+Adicionar no /etc/hots
+```
+// comand
+sudo nano /etc/hosts
+
+// add linhas no arquivo.  NO LUGAR DO IP ABAIXO, COLOCAR O QUE APARECEU ALI EM CIMA
+172.17.0.2      netflix-fullhd.local
+172.17.0.2      netflix-hd.local
+172.17.0.2      netflix-app.local
+172.17.0.2      netflix-pocket.local
+```
+
+Executar o comando 
+```
+minikube ssh
+sudo apt-get update
+sudo apt-get install nano
+
+sudo nano /etc/hosts
+
+// add linhas no arquivo
+172.17.0.2      netflix-fullhd.local
+172.17.0.2      netflix-hd.local
+172.17.0.2      netflix-app.local
+172.17.0.2      netflix-pocket.local
+
+```
+
+
+
 
 ## Testando aplicação
 ```
