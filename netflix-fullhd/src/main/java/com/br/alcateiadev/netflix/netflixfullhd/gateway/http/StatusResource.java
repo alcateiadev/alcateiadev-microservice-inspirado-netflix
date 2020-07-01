@@ -14,5 +14,5 @@ public class StatusResource {
     public String status() {
         return "OK";
     }
-    
+
 }
