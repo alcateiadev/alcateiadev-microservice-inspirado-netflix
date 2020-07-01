@@ -9,7 +9,7 @@ spec:
   selector:
     app: ${spring.application.name}
   ports:
-    - name: http
+    - name: fullhd
       port: 80
-      protocol: TCP
+#      protocol: TCP
       targetPort: ${spring.application.port}

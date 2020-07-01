@@ -87,5 +87,17 @@ helm uninstall netflixhd target/fabric8/helm/kubernetes/netflix-hd  --namespace=
 // run netflix-pocket
 helm uninstall  netflixpocket target/fabric8/helm/kubernetes/netflix-pocket  --namespace=netflix
 
+```
 
+## Testando aplicação
+```
+//Saber o nome do pod
+kubectl get pods -n netflix
+
+//Liberando porta
+kubectl port-forward --namespace netflix netflix-app-758bc48d5d-rw2lj 8084:8084
+
+// No VLC na opção "Open Network Strem" add os endereços
+
+// http://localhost:8084/fullhd/v1/load
 ```
