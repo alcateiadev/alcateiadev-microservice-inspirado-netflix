@@ -10,6 +10,6 @@ spec:
     app: ${spring.application.name}
   ports:
     - name: http
-      port: 8084
+      port: 80
       protocol: TCP
       targetPort: ${spring.application.port}

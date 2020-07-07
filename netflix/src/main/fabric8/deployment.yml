@@ -20,6 +20,18 @@ spec:
       containers:
         - name: ${spring.application.name}
           image: "localhost:5000/${project.artifactId}:${git.commit.id.describe}"
+          livenessProbe:
+            httpGet:
+              path: actuator/liveness
+              port: ${spring.application.port}
+            initialDelaySeconds: 80
+            timeoutSeconds: 2
+          readinessProbe:
+            httpGet:
+              path: actuator/health
+              port: ${spring.application.port}
+            initialDelaySeconds: 40
+            timeoutSeconds: 5
           env:
             - name: KUBERNETES_NAMESPACE
               valueFrom:
