@@ -123,7 +123,7 @@ sudo nano /etc/hosts
 // add linhas no arquivo
 172.17.0.2      netflix-fullhd.local
 172.17.0.2      netflix-hd.local
-172.17.0.2      netflix-app.local
+172.17.0.2      netflix.local
 172.17.0.2      netflix-pocket.local
 
 ```
