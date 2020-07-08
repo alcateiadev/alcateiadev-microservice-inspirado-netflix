@@ -12,24 +12,3 @@ spec:
               backend:
                 serviceName: netflix-app
                 servicePort: 80
-    - host: netflix-fullhd.local
-      http:
-        paths:
-          - path:
-            backend:
-              serviceName: netflix-fullhd
-              servicePort: 80
-    - host: netflix-hd.local
-      http:
-        paths:
-            - path:
-              backend:
-                serviceName: netflix-hd
-                servicePort: 80
-    - host: netflix-pocket.local
-      http:
-        paths:
-            - path:
-              backend:
-                serviceName: netflix-pocket
-                servicePort: 80

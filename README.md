@@ -49,7 +49,7 @@ kubectl get pods -n kube-system
 kubectl port-forward --namespace kube-system registry-wndk5 5000:5000
 ```  
 
-Comandos para compilar a aplicação, gerar a imagem e dar o push do registry
+## Comandos para compilar a aplicação, gerar a imagem e dar o push do registry
 ```
 // gerar os arquivos
 mvn clean package fabric8:build fabric8:push fabric8:resource fabric8:helm
@@ -90,17 +90,15 @@ helm uninstall  netflixpocket target/fabric8/helm/kubernetes/netflix-pocket  --n
 ```
 
 ## Configurando o Ingress
-Na pasta Docker, rodar o comando
 ```
+//Na pasta Docker, rodar o comando
 kubectl apply -f ingress-netflix.yaml
-```
 
-Identificar qual é o IP do minikube
-```
+//Identificar qual é o IP do minikube
 minikube ip
 ```
 
-Configurando o DNS interno no minikube
+## Configurando o DNS interno no minikube
 ```
 // digitar o comando e pegar o IP
 kubectl get svc kube-dns -n kube-system
@@ -124,7 +122,7 @@ nslookup kube-dns.kube-system.svc.cluster.local
 
 ```
 
-Adicionar no /etc/hots
+## Adicionar no /etc/hots
 ```
 // comand
 sudo nano /etc/hosts
@@ -132,10 +130,6 @@ sudo nano /etc/hosts
 // add linhas no arquivo.  NO LUGAR DO IP ABAIXO, COLOCAR O QUE APARECEU ALI EM CIMA
 172.17.0.2      netflix-app.local
 ```
-
-
-
-
 
 ## Testando aplicação
 ```
