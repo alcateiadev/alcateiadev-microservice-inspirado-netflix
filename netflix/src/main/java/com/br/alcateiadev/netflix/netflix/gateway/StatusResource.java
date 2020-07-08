@@ -15,4 +15,12 @@ public class StatusResource {
         return "OK";
     }
 
+    @GetMapping(path = "/health")
+    @ResponseBody
+    public String health() {
+        return "OK";
+    }
+
+
+
 }
