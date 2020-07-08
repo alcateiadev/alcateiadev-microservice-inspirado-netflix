@@ -6,17 +6,17 @@ zuul:
     socket-timeout-millis: 60000
   routes:
     fullhd:
-      path: /fullhd/**  
+      path: /fullhd/**
       sensitiveHeaders:
-      url: http://netflix-fullhd.local
+      url: http://netflix-fullhd.netflix.svc.cluster.local
     hd:
       path: /hd/**
       sensitiveHeaders:
-      url: http://netflix-hd.local
+      url: http://netflix-hd.netflix.svc.cluster.local
     poket:
       path: /pocket/**
       sensitiveHeaders:
-      url: http://netflix-pocket.local
+      url: http://netflix-pocket.netflix.svc.cluster.local
 
 #zuul:
 #  host:

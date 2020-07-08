@@ -100,33 +100,39 @@ Identificar qual é o IP do minikube
 minikube ip
 ```
 
+Configurando o DNS interno no minikube
+```
+// digitar o comando e pegar o IP
+kubectl get svc kube-dns -n kube-system
+
+// entrar no minikube
+minikube ssh
+
+// instalar o nano
+sudo apt-get update
+sudo apt-get install nano
+
+// editar o arquivo abaixo. Este arquivo é a confogração do linux para resolver o DNS
+sudo nano /etc/resolv.conf
+
+//comentar a linha e add no arquivo a linha abaixo
+nameserver IP "QUE VEIO NO PRIMEIRO COMANDO"
+
+// saior do arquivo e digitar o comando
+nslookup kube-dns.kube-system.svc.cluster.local
+// o resultado deve ser o IP e não um erro
+
+```
+
 Adicionar no /etc/hots
 ```
 // comand
 sudo nano /etc/hosts
 
 // add linhas no arquivo.  NO LUGAR DO IP ABAIXO, COLOCAR O QUE APARECEU ALI EM CIMA
-172.17.0.2      netflix-fullhd.local
-172.17.0.2      netflix-hd.local
 172.17.0.2      netflix-app.local
-172.17.0.2      netflix-pocket.local
 ```
 
-Executar o comando 
-```
-minikube ssh
-sudo apt-get update
-sudo apt-get install nano
-
-sudo nano /etc/hosts
-
-// add linhas no arquivo
-172.17.0.2      netflix-fullhd.local
-172.17.0.2      netflix-hd.local
-172.17.0.2      netflix.local
-172.17.0.2      netflix-pocket.local
-
-```
 
 
 
@@ -141,5 +147,5 @@ kubectl port-forward --namespace netflix netflix-app-758bc48d5d-rw2lj 8084:8084
 
 // No VLC na opção "Open Network Strem" add os endereços
 
-// http://localhost:8084/fullhd/v1/load
+// http://netflix.local/fullhd/v1/load
 ```
