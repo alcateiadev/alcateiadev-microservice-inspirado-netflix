@@ -1,0 +1,23 @@
+- name: ns
+  enricher:
+    includes:
+      - fmp-name
+      - fmp-controller
+      - fmp-service
+      - fmp-image
+      - fmp-portname
+      - fmp-ianaservice
+      - fmp-dependency
+      - fmp-pod-annotations
+      - fmp-git
+      - spring-boot-health-check
+      - fmp-dependency
+      - fmp-revision-history
+      - fmp-docker-registry-secret
+  generator:
+    includes:
+      - spring-boot
+  watcher:
+    includes:
+      - spring-boot
+      - docker-image

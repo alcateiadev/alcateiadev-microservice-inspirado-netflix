@@ -44,10 +44,13 @@ kubectl get pods --all-namespaces
 
 ## Configurando o Docker Registry
 ```
+minikube addons list
 minikube addons enable registry  
 kubectl get pods -n kube-system
 kubectl port-forward --namespace kube-system registry-wndk5 5000:5000
 ```  
+## Instalaao do Helm
+https://helm.sh/docs/intro/install/
 
 ## Comandos para compilar a aplicação, gerar a imagem e dar o push do registry
 ```
@@ -67,7 +70,7 @@ helm install  netflix target/fabric8/helm/kubernetes/netflix-app  --namespace=ne
 // run netflix-fullhd
 helm install  netflixfullhd target/fabric8/helm/kubernetes/netflix-fullhd  --namespace=netflix
 
-// run netflix-fullhd
+// run netflix-hd
 helm install netflixhd target/fabric8/helm/kubernetes/netflix-hd  --namespace=netflix
 
 // run netflix-pocket
@@ -128,7 +131,7 @@ nslookup kube-dns.kube-system.svc.cluster.local
 sudo nano /etc/hosts
 
 // add linhas no arquivo.  NO LUGAR DO IP ABAIXO, COLOCAR O QUE APARECEU ALI EM CIMA
-172.17.0.2      netflix-app.local
+172.17.0.2      netflix.local
 ```
 
 ## Testando aplicação
@@ -143,3 +146,13 @@ kubectl port-forward --namespace netflix netflix-app-758bc48d5d-rw2lj 8084:8084
 
 // http://netflix.local/fullhd/v1/load
 ```
+
+## Load Balancer
+```
+kubectl scale --replicas=3 deployment netflix-fullhd -n netflix
+```
+
+
+
+
+
