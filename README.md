@@ -1,3 +1,30 @@
+## Udemy: Microservices inspirado no Netflix+ Minikube e Loadbalancer
+
+Neste curso vamos não vamos focar na criação de microservices aleatórops. Vamos primeiro entender uma funcionalidade específica, desenhar uma arquitetura com uma possível solução, vamos criar os microservices e colocar pra funcionar. Os microservices serão criados usando o Java e a Stack do Spring Boot / Spring Cloud.
+   
+   Vamos também entrar no assunto de infraestrutura, conhecer o Kubernetes e utilizar o Minikube para configurar nossos microservices usando o Fabric8. 
+   
+   ** Conceitos do curso:
+   
+   1. Projetar uma arquitetura;
+   
+   2. Comunicação síncrona com RestAPI;
+   
+   3. API Gateway;
+   
+   4. Servidor de Arquivos;
+   
+   5. Devops;
+   
+   6. Streaming de Vídeo;
+   
+## Alcateia Dev
+
+<img src="Transparente.png">
+
+Link com todos os cursos e cupons: [http://www.alcateiadev.com.br/](http://www.alcateiadev.com.br/) <br>
+Slack: https://alcateiadev.slack.com/
+
 ## Instalação do Helm
 ```
 https://helm.sh/docs/intro/install/
